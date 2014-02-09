@@ -1,0 +1,176 @@
+@font-face {
+	font-family:'press_start_2pregular';
+	src: url('../fonts/pressstart2p-webfont.eot');
+	src: url('../fonts/pressstart2p-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/pressstart2p-webfont.woff') format('woff'), url('../fonts/pressstart2p-webfont.ttf') format('truetype'), url('../fonts/pressstart2p-webfont.svg#press_start_2pregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+	background: #000;
+	overflow: hidden;
+}
+.logo {
+	margin-bottom: 20px;
+	text-align: center;
+	font-family:'press_start_2pregular';
+	font-size: 3.4em;
+	color: #8C65D3;
+	text-shadow: 3px 3px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.footer-container {
+	margin-top: 10px;
+	color: #fff;
+	font-size: 0.8em;
+}
+.game-wrapper {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.game-outer-container {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.game-inner-container {
+	display: table-cell;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	text-align: center;
+}
+.game-loader span {
+	font-family:'press_start_2pregular';
+	color: #fff;
+}
+.game-loader img {
+	margin-bottom: 20px;
+}
+.canvas-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.score-pane {
+	display: none;
+	font-family:'press_start_2pregular';
+	color: #fff;
+	position: relative;
+	margin: 30px 40px;
+	font-weight: 900;
+	text-shadow: -3px -3px 0 #000, 1px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+}
+canvas {
+	width: 100%;
+	height: 100%;
+}
+#menuWrapper {
+	display: none;
+	text-align: left;
+}
+.menu-container {
+	padding: 0;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 1px #000;
+}
+.menu-form-container {
+	padding: 10px;
+}
+#searchQuery {
+	width: 100%;
+}
+#searchResultsLoaderContainer {
+	display: none;
+	padding: 20px;
+	text-align: center;
+}
+#searchResultsLoaderContainer img {
+	height: 50px;
+}
+#searchResultsContainer {
+	display: none;
+	border-top: 1px solid #ddd;
+	max-height: 0;
+	overflow: scroll;
+	transition: max-height 3s ease-in-out;
+}
+#searchResultsContainer:not(:empty) {
+	max-height: 250px;
+}
+ul#searchResults {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+ul#searchResults li {
+}
+ul#searchResults li a {
+	vertical-align: middle;
+	padding: 10px;
+	display: block;
+	cursor: pointer;
+}
+ul#searchResults li a:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: #428bca;
+}
+ul#searchResults li a img {
+	vertical-align: middle;
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+}
+ul#searchResults li:not(:first-child) {
+	border-top: 1px solid #ddd;
+}
+#endMenuWrapper {
+	display: none;
+	position: absolute;
+	bottom: 100px;
+	right: 0;
+	left: 0;
+	text-align: center;
+}
+.btn-outline-inverse {
+	color: #fff;
+	background-color: transparent;
+	border-color: #cdbfe3;
+}
+.btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
+	color: #563d7c;
+	text-shadow: none;
+	background-color: #fff;
+	border-color: #fff;
+}
+#nowPlayingContainer {
+	display: none;
+	padding: 8px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.4);
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
+#nowPlayingImage {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+}
+#nowPlayingTitle {
+	color: #fff;
+	text-shadow: 1px 1px 1px #333;
+}
+.social-links {
+	margin-top: 40px;
+}
+.social-links li {
+	height: 25px;
+	margin: 0 1em;
+	vertical-align: top;
+}

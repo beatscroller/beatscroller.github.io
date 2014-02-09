@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>BeatScroller</title>
+
+	<!-- General META -->
+	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<!-- Semantic META -->
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<!-- Social META -->
+	<meta property="fb:app_id" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="website">
+
+	<!-- Fav Icon -->
+	<link href="img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+	<!-- Application CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+	<!-- HTML5 Shim -->
+	<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+	<div class="game-wrapper">
+		<div class="game-outer-container">
+			<div class="game-inner-container game-loader">
+				<img src="img/loaders/space-loader-black.gif" alt="Loading...">
+				<br>
+				<span>Loading...</span>
+			</div>
+		</div>
+	</div>
+	<audio id="audio"></audio>
+
+	<div class="canvas-container">
+		<canvas id="canvas"></canvas>
+	</div>
+	<h1 class="score-pane" id="score">0</h1>
+
+	<div class="game-wrapper">
+		<div class="game-outer-container">
+			<div class="game-inner-container">
+				<div class="container" id="menuWrapper">
+					<h1 class="logo">BeatScroller</h1>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 menu-container">
+							<div class="menu-form-container">
+								<form class="row form-inline" onsubmit="soundCloud.search();">
+									<div class="form-group col-md-10">
+										<input type="text" autocomplete="off" class="form-control" id="searchQuery" placeholder="Search Songs To Play With">
+									</div>
+									<div class="form-group col-md-2">
+										<input type="submit" class="btn btn-default btn-block" id="searchButton" value="Search">
+									</div>
+								</form>
+							</div>
+							<div id="searchResultsLoaderContainer">
+								<img src="img/loaders/space-loader.gif" alt="Loading">
+							</div>
+							<div id="searchResultsContainer">
+								<ul id="searchResults"></ul>
+							</div>
+						</div>
+					</div>
+					<div class="row text-center footer-container">
+						Created by <a target="_blank" href="https://github.com/benraziel">Ben Raziel</a>, <a target="_blank" href="https://github.com/guyius">Guy Biton</a>, and <a target="_blank" href="https://github.com/amoshaviv">Amos Haviv</a> for <a target="_blank" href="http://www.staticshowdown.com/">Static Showdown</a>. Powered By <a target="_blank" href="https://soundcloud.com/">SoundCloud</a>.
+					</div>
+					<div class="row text-center hidden-xs hidden-sm">
+						<ul class="list-inline social-links">
+							<li>
+								<div class="fb-share-button" data-href="http://beatscroller.com" data-type="button_count"></div>
+							</li>
+							<li>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-text="BeatScroller - an 8bit scroller game powered by your favorite music.">Tweet</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="nowPlayingContainer">
+		<img id="nowPlayingImage">
+		<span id="nowPlayingTitle"></span>
+	</div>
+
+	<div id="endMenuWrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-md-offset-3">
+					<button type="button" onclick="restart();" class="btn btn-outline-inverse btn-lg btn-block">
+						<span class="glyphicon glyphicon-repeat"></span>
+						Restart
+					</button>
+				</div>
+				<div class="col-md-3">
+					<button type="button" onclick="newSong();" class="btn btn-outline-inverse btn-lg btn-block">
+						<span class="glyphicon glyphicon-music"></span>
+						New Song
+					</button>
+				</div>
+			</div>
+			<div class="row text-center hidden-xs hidden-sm">
+				<ul class="list-inline social-links">
+					<li>
+						<div class="fb-share-button" data-href="http://beatscroller.com" data-type="button_count"></div>
+					</li>
+					<li id="gameTwitterButtonContainer"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!--jQuery-->
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+
+	<script type="text/javascript" src="js/shim.js"></script>
+	<script type="text/javascript" src="js/audio-visualizer.js"></script>
+	<script type="text/javascript" src="js/tunnel-generator.js"></script>
+	<script type="text/javascript" src="js/star-field.js"></script>
+	<script type="text/javascript" src="js/rectangle.js"></script>
+	<script type="text/javascript" src="js/audio-bars.js"></script>
+	<script type="text/javascript" src="js/lives.js"></script>
+	<script type="text/javascript" src="js/player.js"></script>
+	<script type="text/javascript" src="js/score-keeper.js"></script>
+	<script type="text/javascript" src="js/sound-cloud.js"></script>
+	<script type="text/javascript" src="js/finish-screen.js"></script>
+	<script type="text/javascript" src="js/game.js"></script>
+
+
+	<!-- Twitter -->
+	<script>
+	! function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (!d.getElementById(id)) {
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}
+	}(document, "script", "twitter-wjs");
+	</script>
+
+	<!-- Facebook -->
+	<div id="fb-root"></div>
+	<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=588647347851720";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<!-- Google Analytics-->
+	<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	ga('create', 'UA-47894725-1', {
+		'cookieDomain': 'none'
+	});
+	ga('send', 'pageview');
+	</script>
+</body>
+
+</html>
