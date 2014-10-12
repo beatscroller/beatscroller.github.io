@@ -30,9 +30,9 @@ var gradient = ctx.createLinearGradient(0, 0, 0, height);
 gradient.addColorStop(0, '#000000');
 gradient.addColorStop(1, '#004159');
 
-var topAudioBars = new AudioBars(canvas, "59DBF1", 100, true);
-var bottomAudioBars = new AudioBars(canvas, "8C65D3", 100, false);
-var starField = new StarField(canvas, "FFFFFF", 20);
+var topAudioBars = new AudioBars(canvas, "#59DBF1", 100, true);
+var bottomAudioBars = new AudioBars(canvas, "#8C65D3", 100, false);
+var starField = new StarField(canvas, "#FFFFFF", 20);
 var tunnelGenerator = new TunnelGenerator();
 var playerSprite = new Player(canvas);
 var lives = new Lives(canvas, 3);
